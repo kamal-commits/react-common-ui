@@ -1,6 +1,6 @@
-# React Common Ui (react-common-ui)
+# React Common UI (@kamalsha/react-common-ui)
 
-A customizable and feature-rich table layout component built with React and Material-UI, designed to simplify the creation of complex tables with features like selectable rows, expandable rows, sorting, pagination, and more.
+A customizable and feature-rich UI component library built with React and Material-UI, designed to simplify the creation of complex UI elements like tables and buttons with features like selectable rows, expandable rows, sorting, pagination, and more.
 
 ## Table of Contents
 
@@ -8,25 +8,38 @@ A customizable and feature-rich table layout component built with React and Mate
 - [Installation](#installation)
 - [Peer Dependencies](#peer-dependencies)
 - [Usage](#usage)
-  - [Basic Example](#basic-example)
-  - [Advanced Example](#advanced-example)
+  - [CustomTableLayout](#customtablelayout)
+    - [Basic Example](#basic-example)
+    - [Advanced Example](#advanced-example)
+  - [CustomButton](#custombutton)
+    - [Example](#example)
 - [Props](#props)
   - [CustomTableLayout Props](#customtablelayout-props)
   - [CellItem Interface](#cellitem-interface)
   - [TableRowData Interface](#tablerowdata-interface)
+  - [CustomButton Props](#custombutton-props)
 - [Contributing](#contributing)
 - [License](#license)
+- [Support](#support)
 
 ---
 
 ## Features
 
-- **Customizable Columns**: Define your own column headings and cell content.
-- **Selectable Rows**: Enable row selection with checkboxes.
-- **Expandable Rows**: Provide additional details with expandable rows.
-- **Sortable Columns**: Allow sorting by clicking on column headers.
-- **Pagination**: Manage large datasets with built-in pagination.
-- **Loading State**: Display a loading indicator while fetching data.
+- **Customizable Components**: Includes components like tables and buttons that are highly customizable.
+- **CustomTableLayout Features**:
+  - **Customizable Columns**: Define your own column headings and cell content.
+  - **Selectable Rows**: Enable row selection with checkboxes.
+  - **Expandable Rows**: Provide additional details with expandable rows.
+  - **Sortable Columns**: Allow sorting by clicking on column headers.
+  - **Pagination**: Manage large datasets with built-in pagination.
+  - **Loading State**: Display a loading indicator while fetching data.
+- **CustomButton Features**:
+  - **Variants**: Supports 'text', 'outlined', and 'contained' variants.
+  - **Sizes**: Available in 'small', 'medium', and 'large' sizes.
+  - **Colors**: Supports standard Material-UI colors.
+  - **Icons**: Easily include icons before or after the button text.
+  - **Customization**: Style the button using the `sx` prop for additional styling.
 - **Responsive Design**: Optimized for different screen sizes.
 - **TypeScript Support**: Fully typed with TypeScript for type safety.
 
@@ -68,11 +81,13 @@ Ensure you have the following peer dependencies installed in your project:
 
 ## Usage
 
-### Basic Example
+### CustomTableLayout
+
+#### Basic Example
 
 ```tsx
 import React from "react";
-import CustomTableLayout from "react-common-ui";
+import { CustomTableLayout } from "react-common-ui";
 
 const App: React.FC = () => {
 	const headings = ["Name", "Category", "Status", "Actions"];
@@ -117,11 +132,11 @@ const App: React.FC = () => {
 export default App;
 ```
 
-### Advanced Example
+#### Advanced Example
 
 ```tsx
 import React from "react";
-import CustomTableLayout from "react-common-ui";
+import { CustomTableLayout } from "react-common-ui";
 
 const App: React.FC = () => {
 	const headings = ["Name", "Category", "Status", "Actions"];
@@ -167,6 +182,37 @@ const App: React.FC = () => {
 			onRowSelect={handleRowSelect}
 			onSort={handleSort}
 		/>
+	);
+};
+
+export default App;
+```
+
+### CustomButton
+
+#### Example
+
+```tsx
+import React from "react";
+import { CustomButton } from "react-common-ui";
+import { IoAddCircleOutline } from "react-icons/io5";
+
+const App: React.FC = () => {
+	return (
+		<div>
+			<CustomButton text="Click Me" color="primary" variant="contained" onClick={() => console.log("Button Clicked")} />
+
+			<CustomButton
+				text="Add Item"
+				color="secondary"
+				variant="outlined"
+				startIcon={<IoAddCircleOutline />}
+				onClick={() => console.log("Add Item Clicked")}
+				sx={{ marginLeft: "10px" }}
+			/>
+
+			<CustomButton text="Disabled" color="error" disabled onClick={() => console.log("This will not be logged")} sx={{ marginLeft: "10px" }} />
+		</div>
 	);
 };
 
@@ -225,6 +271,20 @@ interface TableRowData {
 	details?: React.ReactNode; // For expandable rows
 }
 ```
+
+### CustomButton Props
+
+| Prop        | Type                                                                                               | Default       | Description                                                                             |
+| ----------- | -------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------------------------------------- |
+| `text`      | `string`                                                                                           | `'Click Me'`  | The text to display inside the button.                                                  |
+| `onClick`   | `() => void`                                                                                       | `() => {}`    | Function to call when the button is clicked.                                            |
+| `disabled`  | `boolean`                                                                                          | `false`       | Whether the button is disabled.                                                         |
+| `variant`   | `'text'` \| `'outlined'` \| `'contained'`                                                          | `'contained'` | The variant to use.                                                                     |
+| `size`      | `'small'` \| `'medium'` \| `'large'`                                                               | `'medium'`    | The size of the button.                                                                 |
+| `color`     | `'inherit'` \| `'primary'` \| `'secondary'` \| `'success'` \| `'error'` \| `'info'` \| `'warning'` | `'primary'`   | The color of the button.                                                                |
+| `startIcon` | `React.ReactNode`                                                                                  | `undefined`   | Element placed before the children.                                                     |
+| `endIcon`   | `React.ReactNode`                                                                                  | `undefined`   | Element placed after the children.                                                      |
+| `sx`        | `object`                                                                                           | `{}`          | The system prop that allows defining system overrides as well as additional CSS styles. |
 
 ---
 
