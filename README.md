@@ -251,7 +251,7 @@ This project is licensed under the MIT License.
 
 ## Support
 
-If you encounter any issues or have questions, feel free to open an issue on the [GitHub repository](https://github.com/your-username/react-common-ui) or contact me at [your-email@example.com](mailto:your-email@example.com).
+If you encounter any issues or have questions, feel free to open an issue on the [GitHub repository](https://github.com/kamal-commits/react-common-ui) or contact me at [kkamal714@gmail.com](mailto:kkamal714@gmail.com).
 
 ---
 
